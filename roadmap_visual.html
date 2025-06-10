@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Benerin Kepala Dulu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        
+        .main-title {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 25px;
+            height: calc(100% - 140px);
+            overflow-y: auto;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step:nth-child(1) { border-left-color: #ff6b6b; }
+        .step:nth-child(2) { border-left-color: #4ecdc4; }
+        .step:nth-child(3) { border-left-color: #45b7d1; }
+        .step:nth-child(4) { border-left-color: #96ceb4; }
+        .step:nth-child(5) { border-left-color: #feca57; }
+        .step:nth-child(6) { border-left-color: #ff9ff3; }
+        
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 0.9em;
+        }
+        
+        .step:nth-child(1) .step-number { background: #ff6b6b; }
+        .step:nth-child(2) .step-number { background: #4ecdc4; }
+        .step:nth-child(3) .step-number { background: #45b7d1; }
+        .step:nth-child(4) .step-number { background: #96ceb4; }
+        .step:nth-child(5) .step-number { background: #feca57; }
+        .step:nth-child(6) .step-number { background: #ff9ff3; }
+        
+        .step-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            padding-left: 20px;
+        }
+        
+        .step-content {
+            font-size: 0.85em;
+            line-height: 1.6;
+            color: #34495e;
+        }
+        
+        .quotes {
+            background: rgba(255,107,107,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #ff6b6b;
+        }
+        
+        .quotes li {
+            margin-bottom: 5px;
+            font-style: italic;
+            color: #e74c3c;
+        }
+        
+        .questions {
+            background: rgba(78,205,196,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #4ecdc4;
+        }
+        
+        .questions li {
+            margin-bottom: 5px;
+            color: #16a085;
+            font-weight: 500;
+        }
+        
+        .actions {
+            background: rgba(150,206,180,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #96ceb4;
+        }
+        
+        .actions li {
+            margin-bottom: 5px;
+            color: #27ae60;
+            font-weight: 500;
+        }
+        
+        .benefits {
+            background: rgba(254,202,87,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #feca57;
+        }
+        
+        .benefits li {
+            margin-bottom: 5px;
+            color: #f39c12;
+            font-weight: 500;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .conclusion h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .conclusion p {
+            font-size: 0.9em;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .icon {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 3px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ff6b6b 0%, #ff8e8e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">🧠 ROADMAP BENERIN KEPALA DULU</h1>
+            <p class="subtitle">*Buat karyawan UMR yang ngerasa hidupnya ke-pause dan gak tau harus ngapain*</p>
+        </div>
+        
+        <div class="content">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">🔍 Sadarin Kalau Lu Lagi Disetir 'Narasi Lama'</h3>
+                <div class="step-content">
+                    <p>Pernah denger kalimat ini?</p>
+                    <div class="quotes">
+                        <ul>
+                            <li>"Yang penting kerja dulu, nanti juga naik gaji."</li>
+                            <li>"Sabar aja, rezeki gak ke mana."</li>
+                            <li>"Lu mah bukan tipe orang yang bisa dagang/konten."</li>
+                        </ul>
+                    </div>
+                    <p><strong>Narasi ini jadi software di kepala lu.</strong> Dan selama lu masih make software lama, lu bakal stuck di hidup yang muter-muter di tempat.</p>
+                    <p><span class="highlight">Tugas lu:</span> unlearn narasi itu. Berhenti anggap itu sebagai kebenaran mutlak.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">💭 Ganti Pertanyaan di Kepala Lu</h3>
+                <div class="step-content">
+                    <p><strong>Orang stuck biasanya mikirnya begini:</strong></p>
+                    <div class="quotes">
+                        <ul>
+                            <li>Bisa gak ya gua?</li>
+                            <li>Gimana kalau gagal?</li>
+                            <li>Gua mah siapa</li>
+                        </ul>
+                    </div>
+                    <p><strong>Coba ganti pertanyaannya:</strong></p>
+                    <div class="questions">
+                        <ul>
+                            <li>Kalau 3 bulan ke depan hidup gua gak berubah, apa yang bakal gua sesalin?</li>
+                            <li>Kalau gua mulai sekarang, apa hal kecil yang bisa gua banggakan minggu depan?</li>
+                            <li>Kalau orang lain bisa, kenapa gua gak nyoba juga bahkan cuma 15 menit sehari?</li>
+                        </ul>
+                    </div>
+                    <p>Lu cuma butuh <span class="highlight">pertanyaan baru</span> yang bikin otak lu mikir ke depan, bukan muter di ketakutan.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">🪞 Kenalin Lagi Siapa Diri Lu Sekarang</h3>
+                <div class="step-content">
+                    <p><strong>Coba jujur:</strong></p>
+                    <div class="questions">
+                        <ul>
+                            <li>Apa yang bikin lu kesel dari hidup lu sekarang?</li>
+                            <li>Apa yang paling sering lu omongin tapi gak pernah lu lakuin?</li>
+                            <li>Apa hal kecil yang sebenernya pengen banget lu cobain?</li>
+                        </ul>
+                    </div>
+                    <p><span class="highlight">Jawaban dari situ = pintu ke side hustle pertama lu.</span></p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3 class="step-title">🎯 Ganti Target dari CUAN PECAH TELUR</h3>
+                <div class="step-content">
+                    <p><strong>Gagal mulai karena target lu langsung:</strong> <span style="color: #e74c3c;">✗ dapet duit</span></p>
+                    <p><strong>Padahal buat orang yang belum pernah nyoba, target lu cukup:</strong> <span style="color: #27ae60;">✓ gerak</span></p>
+                    <div class="actions">
+                        <ul>
+                            <li>Upload konten pertama</li>
+                            <li>Bikin akun baru</li>
+                            <li>Kirim 1 komen ke konten yang lu suka</li>
+                            <li>Ubah bio IG jadi personal branding</li>
+                        </ul>
+                    </div>
+                    <p><span class="highlight">Yang lu kejar sekarang:</span> buktiin kalau lu bisa jalanin sesuatu sampe beres.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3 class="step-title">💨 Side Hustle = Jalan Keluar dari Napas yang Sesak</h3>
+                <div class="step-content">
+                    <p><strong>Side hustle itu napas tambahan biar lu:</strong></p>
+                    <div class="benefits">
+                        <ul>
+                            <li>Gak ngutang pas akhir bulan</li>
+                            <li>Gak ngerasa gagal tiap buka rekening</li>
+                            <li>Bisa ngajak orang tua jalan-jalan</li>
+                            <li>Bisa sedekah tanpa mikir</li>
+                            <li>Bisa ibadah tanpa dikejar deadline dan stres</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <h3>🎯 KESIMPULAN</h3>
+                <p><strong>Lu gak butuh motivasi.</strong><br>
+                Lu butuh ngebenerin arah pikiran.<br>
+                Baru dari situ, mental kebentuk.<br>
+                Dan dari situ langkah kecil bisa jalan.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
